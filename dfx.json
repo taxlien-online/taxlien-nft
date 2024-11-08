@@ -2,7 +2,7 @@
     "canisters": {
  
         "icrc7": {
-            "main": "example/main.mo",
+            "main": "taxlien/main.mo",
             "type": "motoko",
             "gzip": true
         }

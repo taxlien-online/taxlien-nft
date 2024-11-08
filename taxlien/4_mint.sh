@@ -1,3 +1,4 @@
+echo $ALICE_PRINCIPAL
 
 # Mint 4 NFTs
 dfx canister call icrc7 icrcX_mint "(
