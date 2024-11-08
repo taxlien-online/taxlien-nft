@@ -1,4 +1,22 @@
-# icrc_nft.mo
+# NFT fot Tax Liens
+Name of team: NativeMind.net
+Name of track:-
+Repo link: https://github.com/Ananta-Shakti/icp_taxlien
+Team participants: Anton Dodonov
+Describe the project: NFT for USA Tax Liens
+What problem it is solving:
+
+Make NFT tokens for buy and sell tax liens.
+Right now it is possible only by offline and online methods. But if buy taxlien and owner didn't pay for long time, money are freezed. So NFT Tokens give possibility to sell tax lien to different person and don't freeze money for a long time
+What unique features of ICP it is using
+
+OISY wallet Principal: 2646156
+Mainnet canister link frontend:-
+Mainnet canister link backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=hf4gy-eiaaa-aaaao-qezba-cai
+Demo video link:-
+
+
+Based on https://internetcomputer.org/docs/current/developer-docs/defi/nfts/nft-collections https://github.com/PanIndustrial-Org/icrc_nft.mo.git
 
 ## Install
 ```
