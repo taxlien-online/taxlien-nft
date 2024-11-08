@@ -24,15 +24,21 @@ TODO list:
 * If documents not received, sets Cancel()
 * On Tax Lien redeem, sets
 
-Actions:
-* 
-
 Data Structure:
 * State
 * County
 * Parcel_ID
 * Face_Amount
 * Property_Amount
+* APR
+* Issue_Date
+
+Actions:
+* Canister->Invest (State,County, Parcel_ID, Face_Amount, Property_Amount, APR,Issue_date), Payable(GETS USDT), Makes new NFT, Public
+* Canister-> OwnerOnly
+
+
+
 * 
 
 Based on https://internetcomputer.org/docs/current/developer-docs/defi/nfts/nft-collections https://github.com/PanIndustrial-Org/icrc_nft.mo.git
