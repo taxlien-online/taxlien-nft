@@ -49,9 +49,20 @@ Simplifications:
 
 
 
-* 
+TODO:
+
+Documentation of code -> high ligh + give high level explanation in video
+Walking through main, walking quickly, Frontend logic
+Go step-by-step from small scope to extended
+Full-fill formalities: on mainnet
+ 
 
 Based on https://internetcomputer.org/docs/current/developer-docs/defi/nfts/nft-collections https://github.com/PanIndustrial-Org/icrc_nft.mo.git
+
+Documentation:
+https://internetcomputer.org/docs/current/tutorials/hackathon-prep-course/exploring-the-frontend/
+https://internetcomputer.org/docs/current/tutorials/developer-journey/level-3/3.4-intro-to-agents/
+https://internetcomputer.org/docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent
 
 ## Install
 ```
