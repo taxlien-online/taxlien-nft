@@ -15,6 +15,20 @@ Mainnet canister link frontend:-
 Mainnet canister link backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=hf4gy-eiaaa-aaaao-qezba-cai
 Demo video link:-
 
+TODO list:
+* Statuses of NFT: Pending, Payed, Cancelled, Invested, Redeemed
+* After User chose Tax Lien with unique Parcel_Id, that is available in online database, he execute BuyLien smart contract and invest Face_Amount in USDT.
+* If Pacrel_Id is unavailable, Deployer runs Cancel(), get Cancelled status. Smart contract send USDT back to payer.
+* Deployer gets Parcel_Id and Face_amount. Makes action Pay(), get unblocked USDT to Deployer account.  Making real cash payment to government and waiting for documents. Status changed to Payed.
+* On documents received, action Invest()
+* If documents not received, sets Cancel()
+* On Tax Lien redeem, sets
+
+Actions:
+* 
+
+Data Structure:
+*
 
 Based on https://internetcomputer.org/docs/current/developer-docs/defi/nfts/nft-collections https://github.com/PanIndustrial-Org/icrc_nft.mo.git
 
