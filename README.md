@@ -41,8 +41,11 @@ Actions:
 * Canister->Pay(NFT), ReleaseUSDT, Sets Status-Payed, DeployerOnly
 * Canister->Invest(NFT), Sets Status=Invested, DeployerOnly
 * Canister->Redeem(NFT), Payable(GETS USDT),Sets Status=Redeemed, Release(USDT to owner), DeployerOnly
+* Canister->Burn(NFT) Release(USDT to owner), OwnerOnly
 
 
+Simplifications:
+* In this iteration lets say that information (State,County, Parcel_ID, Face_Amount, Property_Amount, APR,Issue_date) will
 
 
 
