@@ -28,7 +28,12 @@ Actions:
 * 
 
 Data Structure:
-*
+* State
+* County
+* Parcel_ID
+* Face_Amount
+* Property_Amount
+* 
 
 Based on https://internetcomputer.org/docs/current/developer-docs/defi/nfts/nft-collections https://github.com/PanIndustrial-Org/icrc_nft.mo.git
 
