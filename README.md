@@ -22,7 +22,8 @@ TODO list:
 * Deployer gets Parcel_Id and Face_amount. Makes action Pay(), get unblocked USDT to Deployer account.  Making real cash payment to government and waiting for documents. Status changed to Payed.
 * On documents received, action Invest()
 * If documents not received, sets Cancel()
-* On Tax Lien redeem, sets
+* On Tax Lien redeem, Deployers sets Redeem(), 
+* NFT with Status==Invested can be traded through MarketPlaces
 
 Data Structure:
 * State
@@ -32,10 +33,16 @@ Data Structure:
 * Property_Amount
 * APR
 * Issue_Date
+* Status
 
 Actions:
 * Canister->Invest (State,County, Parcel_ID, Face_Amount, Property_Amount, APR,Issue_date), Payable(GETS USDT), Makes new NFT, Public
-* Canister-> OwnerOnly
+* Canister->Cancel(NFT), Sets Status=Cancelled, Release(USDT to owner) DeployerOnly
+* Canister->Pay(NFT), ReleaseUSDT, Sets Status-Payed, DeployerOnly
+* Canister->Invest(NFT), Sets Status=Invested, DeployerOnly
+* Canister->Redeem(NFT), Payable(GETS USDT),Sets Status=Redeemed, Release(USDT to owner), DeployerOnly
+
+
 
 
 
