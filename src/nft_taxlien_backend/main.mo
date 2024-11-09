@@ -6,6 +6,7 @@ import Time "mo:base/Time";
 import Nat "mo:base/Nat";
 import D "mo:base/Debug";
 import CertifiedData "mo:base/CertifiedData";
+import Option "mo:base/Option";
 
 import CertTree "mo:cert/CertTree";
 
@@ -18,14 +19,12 @@ import ICRC37Default "./initial_state/icrc37";
 import ICRC3Default "./initial_state/icrc3";
 
 
-
 shared(_init_msg) actor class NFTaxTLien(_args : {
 //shared(_init_msg) actor class Example(_args : {
   icrc7_args: ?ICRC7.InitArgs;
   icrc37_args: ?ICRC37.InitArgs;
   icrc3_args: ICRC3.InitArgs;
 }) = this {
-
 
   type Account =                          ICRC7.Account;
   type Environment =                      ICRC7.Environment;
@@ -525,9 +524,24 @@ shared(_init_msg) actor class NFTaxTLien(_args : {
     };
   };
 
-  /*
+  
+
+
+  private func get_memo(token_id : Nat /*, status : Blob*/) : ICRC7.UpdateNFTRequest {
+    let updateNFTRequest: ICRC7.UpdateNFTRequest = [
+    {
+        memo = null; //status; //?Blob.fromArray([116, 101, 115, 116]); // "test" 
+        created_at_time = null;
+        token_id = token_id;
+        updates = []; 
+    }];
+    return updateNFTRequest;
+  };
+
+
   //this lets an deployer to cancel
-  public shared(msg) func LienCancel(token_id : Nat) : async Nat {
+  //public shared(msg) func LienCancel(tokens : ICRC7.UpdateNFTRequest) : async Nat {
+  public shared(msg) func LienCancel(token_id : Nat) : async [ICRC7.UpdateNFTResult] {
     //TODO: Change -> Only Deployer
     //Only Deployer
     //if(msg.caller != icrc7().get_state().deployer) D.trap("Unauthorized (only deployer)");
@@ -535,8 +549,16 @@ shared(_init_msg) actor class NFTaxTLien(_args : {
     //TOO: Only status==Pending 
 
     //TODO: Set status=Cancelled
+
+
+    switch(icrc7().update_nfts<system>(msg.caller, get_memo(token_id))){
+      case(#ok(updateNftResultArray)) updateNftResultArray;
+      case(#err(err)) D.trap(err);
+    }    
   };
 
+
+  /*
   //this lets deployer to get money from smart contract and send money to tax department
   public shared(msg) func LienPay(token_id : Nat) : async Nat {
     //TODO: Change -> Only Deployer
@@ -595,13 +617,6 @@ shared(_init_msg) actor class NFTaxTLien(_args : {
 
     //Call Burn
     return token_id;
-  };
-
-
-
- 
-  public query func greet(name : Text) : async Text {
-    return "Hello, " # name # "!";
   };
 
 };

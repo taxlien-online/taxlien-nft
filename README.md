@@ -1,15 +1,61 @@
-# NFT for Tax Lien 📜🏠
+# 📜🏠 NFT for Tax Lien
 
 A **Lien** is a legal right to keep possession of property belonging to another person until a debt owed by that person is discharged.  
 A **Tax Lien** is imposed by law on a property to secure the payment of taxes.
 
-## Key Features 💡
+## 💡 Key Features 
 
-- **Deployer**: Acts as a proxy public company between the **Tax Department** and **Private Crypto Investors**. 🏛️🔗
-- **NFT Issuance**: On-demand NFTs are issued for investing in any available Tax Lien from the **Tax Department**. 💎💰
-- **NFT Burn Mechanism**: The NFT can be burned to claim **investments and rewards** ONLY after the **Tax Payer** has paid their debts. 🔥💸
-- **Real Estate Claim**: The NFT can also be burned to acquire the **Real Estate property** if the **Tax Payer** fails to pay their debts on time. 🏡⏳
+- 🏛️🔗 **Deployer**: Acts as a proxy public company between the **Tax Department** and **Private Crypto Investors**. 
+- 💎💰 **NFT Issuance**: On-demand NFTs are issued for investing in any available Tax Lien from the **Tax Department**.
+- 🔥💸 **NFT Burn Mechanism**: The NFT can be burned to claim **investments and rewards** ONLY after the **Tax Payer** has paid their debts. 
+- 🏡⏳ **Real Estate Claim**: The NFT can also be burned to acquire the **Real Estate property** if the **Tax Payer** fails to pay their debts on time.
 
+## 🛠️ Architecture of Solution 
+
+The solution consists of 6 canisters:
+- 🔑 **internet_identity** - Standard implementation for authorization
+- 📒 **icrc1_ledger_canister** - Standard implementation of ICRC-1 
+- 💵 **payment_backend** - Custom canister for payment operations in ICRC-1 (based on `token_transfer_from`)
+- 📈 **nft_taxlien_backend** - Custom canister for ICRC-7/NFT implementation (based on `icrc7.mo`)
+- 🗂️ **business_backend** - Custom canister for business logic, will be parcels database in the future (based on `Hello World` sample)
+- 🌐 **nft_taxlien_frontend** - Custom canister for frontend
+
+## 🔄 Canister Interactions
+- Canisters can interact with each other
+Example canister payment_backend sends command to nft_taxlien_backend for issue NFT after successfull payment
+```
+    result = await NFTTaxLienBackend.LienMint(memo);
+    result = await NFTTaxLienBackend.transfer(memo);
+    debug_show(result);
+```
+
+- Canisters can have some internal logic
+Example canister nft_taxlien_backend can use standart Mint(), Burn() commands and non-standart LienCancel, LienPay, LienFail, LienInvest, Redeem
+```
+  public shared(msg) func LienCancel(token_id : Nat) : async [ICRC7.UpdateNFTResult] {
+    //TODO: Change -> Only Deployer
+    //Only Deployer
+    //if(msg.caller != icrc7().get_state().deployer) D.trap("Unauthorized (only deployer)");
+
+    //TOO: Only status==Pending 
+
+    //TODO: Set status=Cancelled
+
+
+    switch(icrc7().update_nfts<system>(msg.caller, get_memo(token_id))){
+      case(#ok(updateNftResultArray)) updateNftResultArray;
+      case(#err(err)) D.trap(err);
+    }    
+  };
+```
+
+* Canister->LienCancel(NFT), Sets Status=Cancelled DeployerOnly
+* Canister->LienPay(NFT), ReleaseUSDT, Sets Status-Payed, DeployerOnly
+* Canister->LienFail(NFT), ReleaseUSDT, Sets Status=Failed, Payable(GETS USDT), DeployerOnly
+* Canister->LienInvest(NFT), Sets Status=Invested, DeployerOnly
+* Canister->LienRedeem(
+
+ 
 ```
 Name of team: NativeMind.net
 Name of track:-

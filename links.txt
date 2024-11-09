@@ -1,0 +1,8 @@
+https://internetcomputer.org/docs/current/developer-docs/web-apps/custom-domains/using-custom-domains
+https://docs.google.com/forms/d/e/1FAIpQLSc-0BL9FMRtI0HhWj4g7CCYjf3TMr4_K_qqmagjzkUH_CKczw/viewform plug catalog
+https://github.com/flowerpowerdao/power-equalizer/tree/main/src/Sale implementation, but in this time icrc7 didn't exists
+https://github.com/flowerpowerdao/power-equalizer/tree/main/src/Marketplace, but in this time icrc7 didn't exists
+https://github.com/PanIndustrial-Org/icrc7.mo/blob/main/README.md#metadata update_nfts
+https://mops.one/icrc7-mo
+
+https://github.com/dfinity/examples/blob/master/motoko/token_transfer_from/src/token_transfer_from_backend/main.mo #Transfer logic
