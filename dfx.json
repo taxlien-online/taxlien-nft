@@ -1,21 +1,37 @@
 {
-    "canisters": {
- 
-        "icrc7": {
-            "main": "taxlien/main.mo",
-            "type": "motoko",
-            "gzip": true
+  "canisters": {
+    "internet_identity": {
+      "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
+      "frontend": {},
+      "remote": {
+        "id": {
+          "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
         }
-        
+      },
+      "type": "custom",
+      "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz"
     },
-    "defaults": {
-        "build": {
-            "args": "",
-            "packtool": "mops sources"
-        },
-        "replica": {
-            "subnet_type": "system"
-        }
+    "nft_taxlien_backend": {
+      "main": "src/nft_taxlien_backend/main.mo",
+      "type": "motoko"
     },
-    "version": 1
+    "nft_taxlien_frontend": {
+      "dependencies": [
+        "nft_taxlien_backend"
+      ],
+      "source": [
+        "src/nft_taxlien_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "nft_taxlien_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
 }
