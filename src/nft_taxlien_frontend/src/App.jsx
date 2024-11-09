@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { show_frontend_backend } from 'declarations/show_frontend_backend';
+import { nft_taxlien_backend } from 'declarations/nft_taxlien_backend';
 
 function App() {
   const [greeting, setGreeting] = useState('');
@@ -7,7 +7,7 @@ function App() {
   function handleSubmit(event) {
     event.preventDefault();
     const name = event.target.elements.name.value;
-    show_frontend_backend.greet(name).then((greeting) => {
+    nft_taxlien_backend.greet(name).then((greeting) => {
       setGreeting(greeting);
     });
     return false;
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
+      <img src="/taxlien.png" alt="Tax Lien logo" />
       <br />
       <br />
       <form action="#" onSubmit={handleSubmit}>

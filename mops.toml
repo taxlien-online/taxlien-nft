@@ -2,7 +2,7 @@
 name = "icrc-nft-taxlien"
 version = "0.2.2"
 description = "NFT for Tax Liens"
-repository = "https://github.com/Ananta-Shakti/icp_taxlien"
+repository = "https://github.com/Ananta-Shakti/nft_taxlien"
 keywords = [ "nft" ]
 license = "MIT"
 

@@ -15,6 +15,10 @@ Mainnet canister link frontend:-
 Mainnet canister link backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=hf4gy-eiaaa-aaaao-qezba-cai
 Demo video link:-
 
+
+NFT issued on-demand
+Deployer serves like a proxy between Tax Department and Investor
+
 TODO list:
 * Statuses of NFT: Pending, Payed, Cancelled, Invested, Redeemed
 * After User chose Tax Lien with unique Parcel_Id, that is available in online database, he execute BuyLien smart contract and invest Face_Amount in USDT.
@@ -36,9 +40,10 @@ Data Structure:
 * Status
 
 Actions:
-* Canister->Invest (State,County, Parcel_ID, Face_Amount, Property_Amount, APR,Issue_date), Payable(GETS USDT), Makes new NFT, Public
-* Canister->Cancel(NFT), Sets Status=Cancelled, Release(USDT to owner) DeployerOnly
-* Canister->Pay(NFT), ReleaseUSDT, Sets Status-Payed, DeployerOnly
+* Canister->LienMint (State,County, Parcel_ID, Face_Amount, Property_Amount, APR,Issue_date), Payable(GETS USDT), Makes new NFT, Public, from Mint
+* Canister->LienCancel(NFT), Sets Status=Cancelled DeployerOnly
+* Canister->LienPay(NFT), ReleaseUSDT, Sets Status-Payed, DeployerOnly
+* Canister->LienFailed(NFT), ReleaseUSDT, Sets Status=Failed, Payable(GETS USDT), DeployerOnly
 * Canister->Invest(NFT), Sets Status=Invested, DeployerOnly
 * Canister->Redeem(NFT), Payable(GETS USDT),Sets Status=Redeemed, Release(USDT to owner), DeployerOnly
 * Canister->Burn(NFT) Release(USDT to owner), OwnerOnly
