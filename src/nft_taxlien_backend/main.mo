@@ -509,14 +509,16 @@ shared(_init_msg) actor class NFTaxTLien(_args : {
   };
   
   //CUSTOM CODE
-  //this lets an everybody to create on demand NFT
 
+  //this lets an everybody to create on demand NFT
   public shared(msg) func LienMint(tokens: ICRC7.SetNFTRequest) : async [ICRC7.SetNFTResult] {
 
-    //for now we require an owner to mint.
+    
     //TODO: Change -> anybody can mint
     //TODO: Change -> payable
+    //TODO: Add -> additional data
 
+    //for now we require an owner to mint.
     switch(icrc7().set_nfts<system>(msg.caller, tokens, true)){
       case(#ok(val)) val;
       case(#err(err)) D.trap(err);
@@ -526,23 +528,61 @@ shared(_init_msg) actor class NFTaxTLien(_args : {
   /*
   //this lets an deployer to cancel
   public shared(msg) func LienCancel(token_id : Nat) : async Nat {
+    //TODO: Change -> Only Deployer
     //Only Deployer
     //if(msg.caller != icrc7().get_state().deployer) D.trap("Unauthorized (only deployer)");
 
-    //Only status==Pending 
+    //TOO: Only status==Pending 
 
-    //Set status=Cancelled
+    //TODO: Set status=Cancelled
   };
 
+  //this lets deployer to get money from smart contract and send money to tax department
+  public shared(msg) func LienPay(token_id : Nat) : async Nat {
+    //TODO: Change -> Only Deployer
+    //Only Deployer
+    //if(msg.caller != icrc7().get_state().deployer) D.trap("Unauthorized (only deployer)");
+
+    //TODO: Only status==Pending 
+    //TODO: release coins from Smart Contract
+    //TODO: Set status=Payed
+  };
+
+  //this lets deployer to send money back in case of problems with tax department
   public shared(msg) func LienFailed(token_id : Nat) : async Nat {
     //Only Deployer
+    //TODO: Change -> Only Deployer
     //if(msg.caller != icrc7().get_state().deployer) D.trap("Unauthorized (only deployer)");
 
-    //Only status==Payed 
+    //TODO: Only status==Payed 
+    //TODO: Payable, block coins in Smart Contract
+    //TODO: Set status=Failed
+  };
 
-    //Set status=Failed
+  //this lets deployer to inform, that money are invested
+  public shared(msg) func LienInvest(token_id : Nat) : async Nat {
+    //Only Deployer
+    //TODO: Change -> Only Deployer
+    //if(msg.caller != icrc7().get_state().deployer) D.trap("Unauthorized (only deployer)");
+
+    //TODO: Only status==Payed
+    //TODO: Set status=Invested
+  };
+
+  //this lets deployer to send money (invested+profit) when tax lien redeemed
+  public shared(msg) func LienRedeem(token_id : Nat) : async Nat {
+    //Only Deployer
+    //TODO: Change -> Only Deployer
+    //if(msg.caller != icrc7().get_state().deployer) D.trap("Unauthorized (only deployer)");
+
+    //TODO: Only status==Payed 
+    //TODO: Payable, block coins in Smart Contract (Amount + Income)
+    //TODO: Set status=Failed
   };
   */
+
+
+
   //this lets an owner burn redeemed and get money back
   public shared(msg) func LienBurn(token_id : Nat) : async Nat {
     //Only owner
