@@ -549,7 +549,7 @@ shared(_init_msg) actor class NFTaxTLien(_args : {
   };
 
   //this lets deployer to send money back in case of problems with tax department
-  public shared(msg) func LienFailed(token_id : Nat) : async Nat {
+  public shared(msg) func LienFail(token_id : Nat) : async Nat {
     //Only Deployer
     //TODO: Change -> Only Deployer
     //if(msg.caller != icrc7().get_state().deployer) D.trap("Unauthorized (only deployer)");

@@ -1,4 +1,16 @@
-# NFT fot Tax Liens
+# NFT for Tax Lien 📜🏠
+
+A **Lien** is a legal right to keep possession of property belonging to another person until a debt owed by that person is discharged.  
+A **Tax Lien** is imposed by law on a property to secure the payment of taxes.
+
+## Key Features 💡
+
+- **Deployer**: Acts as a proxy public company between the **Tax Department** and **Private Crypto Investors**. 🏛️🔗
+- **NFT Issuance**: On-demand NFTs are issued for investing in any available Tax Lien from the **Tax Department**. 💎💰
+- **NFT Burn Mechanism**: The NFT can be burned to claim **investments and rewards** ONLY after the **Tax Payer** has paid their debts. 🔥💸
+- **Real Estate Claim**: The NFT can also be burned to acquire the **Real Estate property** if the **Tax Payer** fails to pay their debts on time. 🏡⏳
+
+```
 Name of team: NativeMind.net
 Name of track:-
 Repo link: https://github.com/Ananta-Shakti/icp_taxlien
@@ -14,10 +26,8 @@ OISY wallet Principal: 2646156
 Mainnet canister link frontend:-
 Mainnet canister link backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=hf4gy-eiaaa-aaaao-qezba-cai
 Demo video link:-
+```
 
-
-NFT issued on-demand
-Deployer serves like a proxy between Tax Department and Investor
 
 TODO list:
 * Statuses of NFT: Pending, Payed, Cancelled, Invested, Redeemed
@@ -39,14 +49,25 @@ Data Structure:
 * Issue_Date
 * Status
 
-Actions:
+NFT Actions:
 * Canister->LienMint (State,County, Parcel_ID, Face_Amount, Property_Amount, APR,Issue_date), Payable(GETS USDT), Makes new NFT, Public, from Mint
 * Canister->LienCancel(NFT), Sets Status=Cancelled DeployerOnly
 * Canister->LienPay(NFT), ReleaseUSDT, Sets Status-Payed, DeployerOnly
-* Canister->LienFailed(NFT), ReleaseUSDT, Sets Status=Failed, Payable(GETS USDT), DeployerOnly
-* Canister->Invest(NFT), Sets Status=Invested, DeployerOnly
-* Canister->Redeem(NFT), Payable(GETS USDT),Sets Status=Redeemed, Release(USDT to owner), DeployerOnly
-* Canister->Burn(NFT) Release(USDT to owner), OwnerOnly
+* Canister->LienFail(NFT), ReleaseUSDT, Sets Status=Failed, Payable(GETS USDT), DeployerOnly
+* Canister->LienInvest(NFT), Sets Status=Invested, DeployerOnly
+* Canister->LienRedeem(NFT), Payable(GETS USDT),Sets Status=Redeemed, Release(USDT to owner), DeployerOnly
+* Canister->LienBurn(NFT) Release(USDT to owner), OwnerOnly
+
+USER:
+LienMint
+LienBurn
+
+ADMIN:
+LienCancel
+LienPay
+LienFail
+LienInvest
+LienRedeem
 
 
 Simplifications:
