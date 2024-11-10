@@ -25,12 +25,13 @@ const TokenSender = ({ actor, updateSupply, decimals }) => {
         created_at_time: [],
         amount: amount * Number(10 ** Number(decimals))
       });*/
-
-      const result = await actor.icrcX_mint([{
+      console.log("mint");
+      const data={
         token_id: 0,
+        
         owner: {
           owner: Principal.fromText(address),
-          subaccount: []
+          subaccount: null
         },
         metadata: {
           "icrc97:metadata":
@@ -48,7 +49,9 @@ const TokenSender = ({ actor, updateSupply, decimals }) => {
         //memo: [],
         override: true,
         //created_at_time: []
-      }]);
+      };
+      console.log(data);
+      const result = await actor.icrcX_mint([data]);
 
 
 

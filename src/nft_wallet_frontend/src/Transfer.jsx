@@ -14,7 +14,8 @@ const TransferFrom = ({ actor, decimals }) => {
     e.preventDefault();
     try {
       //const result = await actor.icrc2_transfer_from({
-      const result = await actor.icrc7_transfer([{
+      console.log("icrc7_transfer");
+      const result1 = await actor.icrc7_transfer([{
         //from: { owner: Principal.fromText(fromAddress), subaccount: [] },
         //to: { owner: Principal.fromText(toAddress), subaccount: [] },
         to: { owner: Principal.fromText(toAddress), subaccount: [] },
@@ -25,6 +26,8 @@ const TransferFrom = ({ actor, decimals }) => {
         from_subaccount: [],
         created_at_time: []        
       }]);
+      console.log(result1);
+      const result=result1[0][0];
       /*
       spender_subaccount: [], //spenderSubaccount ? [spenderSubaccount] : [],
               fee: [],

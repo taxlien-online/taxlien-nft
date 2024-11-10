@@ -1,7 +1,10 @@
-echo $ICRC7_CANISTER
+II_CANISTER=uwtvp-wqaaa-aaaaj-qnd6a-cai
+
+echo $II_CANISTER
 
 # Mint 4 NFTs
-dfx canister call nft_taxlien_backend icrcX_mint "(
+#dfx canister call nft_taxlien_backend icrcX_mint "(
+dfx canister call nft_taxlien_backend icrcX_mint --network ic "(
   vec {
     record {
       token_id = 0 : nat;
@@ -9,7 +12,7 @@ dfx canister call nft_taxlien_backend icrcX_mint "(
       metadata = variant {
         Map = vec {
           record { \"icrc97:metadata\"; variant { Map = vec {
-            record { \"name\"; variant { Text = \"Image 1\" } };
+            record { \"name\"; variant { Text = \"Lien NFT...\" } };
             record { \"description\"; variant { Text = \"NFT for Tax Lien, USA, FL, POLK, ID:12345\" } };
             record { \"assets\"; variant { Array = vec {
               variant { Map = vec {
