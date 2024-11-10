@@ -14,20 +14,21 @@ const TransferFrom = ({ actor, decimals }) => {
     e.preventDefault();
     try {
       //const result = await actor.icrc2_transfer_from({
-      const result = await actor.icrc7_transfer({
+      const result = await actor.icrc7_transfer([{
         //from: { owner: Principal.fromText(fromAddress), subaccount: [] },
         //to: { owner: Principal.fromText(toAddress), subaccount: [] },
-        to: { owner: Principal.fromText(toAddress) },
-        token_id: tokenId,
-        //, subaccount: []
+        to: { owner: Principal.fromText(toAddress), subaccount: [] },
+        token_id: 0,//tokenId,
+        //
         //amount: amount * Number(10 ** Number(decimals)),
-        
-      });
+        memo: [],
+        from_subaccount: [],
+        created_at_time: []        
+      }]);
       /*
       spender_subaccount: [], //spenderSubaccount ? [spenderSubaccount] : [],
               fee: [],
-        memo: [],
-        created_at_time: []
+
       */
       if ('Ok' in result) {
         setStatus({ message: 'Transfer successful', isSuccess: true });
