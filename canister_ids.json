@@ -4,5 +4,17 @@
   },
   "icrc1_ledger_canister": {
     "ic": "uduec-xyaaa-aaaaj-qnd5q-cai"
+  },
+  "nft_taxlien_backend": {
+    "ic": "uwtvp-wqaaa-aaaaj-qnd6a-cai"
+  },
+  "nft_taxlien_frontend": {
+    "ic": "urst3-3iaaa-aaaaj-qnd6q-cai"
+  },
+  "nft_wallet_frontend": {
+    "ic": "uyryh-naaaa-aaaaj-qnd7a-cai"
+  },
+  "payment_backend": {
+    "ic": "u7q6t-ayaaa-aaaaj-qnd7q-cai"
   }
 }

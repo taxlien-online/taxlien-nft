@@ -15,5 +15,8 @@
   "workspaces": [
     "src/nft_wallet_frontend",
     "src/nft_taxlien_frontend"
-  ]
+  ],
+  "dependencies": {
+    "typescript": "^5.6.3"
+  }
 }

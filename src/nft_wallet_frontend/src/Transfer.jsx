@@ -17,7 +17,7 @@ const TransferFrom = ({ actor, decimals }) => {
       const result = await actor.icrc7_transfer({
         //from: { owner: Principal.fromText(fromAddress), subaccount: [] },
         //to: { owner: Principal.fromText(toAddress), subaccount: [] },
-        to: { owner: Principal.fromText(fromAddress) },
+        to: { owner: Principal.fromText(toAddress) },
         token_id: tokenId,
         //, subaccount: []
         //amount: amount * Number(10 ** Number(decimals)),
