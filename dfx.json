@@ -35,7 +35,16 @@
       ],
       "type": "assets",
       "workspace": "nft_taxlien_frontend"
+    },
+    "nft_wallet_frontend": {
+      "dependencies": ["nft_taxlien_backend"],
+      "frontend": {
+        "entrypoint": "src/nft_wallet_frontend/index.html"
+      },
+      "source": ["src/nft_wallet_frontend/dist"],
+      "type": "assets"
     }
+
   },
   "defaults": {
     "build": {

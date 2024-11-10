@@ -1,4 +1,12 @@
-# 📜🏠 NFT for Tax Lien
+# NFT Wallet for ICP.NINJA + Implementation: Tax Lien NFT
+
+## NFT Wallet
+
+- There are implementations for ICRC-1 tokens at ICP.Ninja, but there is no anything for ICRC-7
+
+
+
+## 📜🏠 Tax Lien NFT
 
 A **Lien** is a legal right to keep possession of property belonging to another person until a debt owed by that person is discharged.  
 A **Tax Lien** is imposed by law on a property to secure the payment of taxes.
@@ -13,12 +21,14 @@ A **Tax Lien** is imposed by law on a property to secure the payment of taxes.
 ## 🛠️ Architecture of Solution 
 
 The solution consists of 6 canisters:
-- 🔑 **internet_identity** - Standard implementation for authorization
-- 📒 **icrc1_ledger_canister** - Standard implementation of ICRC-1 
-- 💵 **payment_backend** - Custom canister for payment operations in ICRC-1 (based on `token_transfer_from`)
 - 📈 **nft_taxlien_backend** - Custom canister for ICRC-7/NFT implementation (based on `icrc7.mo`)
 - 🗂️ **business_backend** - Custom canister for business logic, will be parcels database in the future (based on `Hello World` sample)
-- 🌐 **nft_taxlien_frontend** - Custom canister for frontend
+- 💵 **payment_backend** - Custom canister for payment operations in ICRC-1 (based on `token_transfer_from`)
+- 🎉 **nft_taxlien_frontend** - Custom canister for users frontend
+- 🚀 **admin_frontend** - Custom canister for admin frontend
+- 🔑 **internet_identity** - Standard implementation for authorization
+- 📒 **icrc1_ledger_canister** - Standard implementation of ICRC-1 
+
 
 ## 🔄 Canister Interactions
 - Canisters can interact with each other
@@ -28,6 +38,12 @@ Example canister payment_backend sends command to nft_taxlien_backend for issue 
     result = await NFTTaxLienBackend.transfer(memo);
     debug_show(result);
 ```
+
+
+## 💡 ICRC-7/NFT implementation (canister nft_taxlien_backend)
+- 🔥 Can store and _update_ additional information im memo field using _nfts_update_ 
+- 💎 Can use non-standart commands: LienCancel(), LienPay(), LienFail(), LienInvest(), Redeem()
+- 🔥 Can use can use standart commands: icrcX_mint(), icrcX_burn()
 
 - Canisters can have some internal logic
 Example canister nft_taxlien_backend can use standart Mint(), Burn() commands and non-standart LienCancel, LienPay, LienFail, LienInvest, Redeem
@@ -48,6 +64,7 @@ Example canister nft_taxlien_backend can use standart Mint(), Burn() commands an
     }    
   };
 ```
+
 
 * Canister->LienCancel(NFT), Sets Status=Cancelled DeployerOnly
 * Canister->LienPay(NFT), ReleaseUSDT, Sets Status-Payed, DeployerOnly

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { nft_taxlien_backend } from 'declarations/nft_taxlien_backend';
+import { business_backend } from 'declarations/business_backend';
 
 function App() {
   const [greeting, setGreeting] = useState('');

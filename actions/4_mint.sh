@@ -18,14 +18,6 @@ dfx canister call nft_taxlien_backend icrcX_mint "(
                 record { \"purpose\"; variant { Text = \"icrc97:image\" } }
               }}
             }}}
-            record { \"State\"; variant { Text = \"Florida\" } };
-            record { \"County\"; variant { Text = \"Polk\" } };
-            record { \"Parcel_ID\"; variant { Text = \"12345\" } };
-            record { \"Face_Amount\"; variant { Text = \"10000\" } };
-            record { \"Property_Amount\"; variant { Text = \"9500\" } };
-            record { \"APR\"; variant { Text = \"5%\" } };
-            record { \"Issue_Date\"; variant { Text = \"2024-11-09\" } };
-            record { \"Status\"; variant { Text = \"Active\" } }
           }}}
         }
       };

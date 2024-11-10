@@ -509,28 +509,13 @@ shared(_init_msg) actor class NFTaxTLien(_args : {
   
   //CUSTOM CODE
 
-  //this lets an everybody to create on demand NFT
-  public shared(msg) func LienMint(tokens: ICRC7.SetNFTRequest) : async [ICRC7.SetNFTResult] {
-
-    
-    //TODO: Change -> anybody can mint
-    //TODO: Change -> payable
-    //TODO: Add -> additional data
-
-    //for now we require an owner to mint.
-    switch(icrc7().set_nfts<system>(msg.caller, tokens, true)){
-      case(#ok(val)) val;
-      case(#err(err)) D.trap(err);
-    };
-  };
-
   
 
 
-  private func get_memo(token_id : Nat /*, status : Blob*/) : ICRC7.UpdateNFTRequest {
+  private func get_memo(token_id : Nat, memo : ?Blob) : ICRC7.UpdateNFTRequest {
     let updateNFTRequest: ICRC7.UpdateNFTRequest = [
     {
-        memo = null; //status; //?Blob.fromArray([116, 101, 115, 116]); // "test" 
+        memo = memo;
         created_at_time = null;
         token_id = token_id;
         updates = []; 
@@ -539,19 +524,20 @@ shared(_init_msg) actor class NFTaxTLien(_args : {
   };
 
 
-  //this lets an deployer to cancel
-  //public shared(msg) func LienCancel(tokens : ICRC7.UpdateNFTRequest) : async Nat {
+
   public shared(msg) func LienCancel(token_id : Nat) : async [ICRC7.UpdateNFTResult] {
-    //TODO: Change -> Only Deployer
-    //Only Deployer
+    //
+    /* this lets an deployer to cancel
+    
+    TODO: 
+    1. If Not Deployer -> trap
     //if(msg.caller != icrc7().get_state().deployer) D.trap("Unauthorized (only deployer)");
-
-    //TOO: Only status==Pending 
-
-    //TODO: Set status=Cancelled
-
-
-    switch(icrc7().update_nfts<system>(msg.caller, get_memo(token_id))){
+    2. If status!=Pending -> trap
+    3. Set status=Cancelled
+    4. update_nfts
+    */
+    
+    switch(icrc7().update_nfts<system>(msg.caller, get_memo(token_id,null))){
       case(#ok(updateNftResultArray)) updateNftResultArray;
       case(#err(err)) D.trap(err);
     }    
