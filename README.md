@@ -1,15 +1,15 @@
-# NFT Wallet for ICP.NINJA + Implementation: Tax Lien NFT
+# NFT Wallet for ICP.Ninja: Tax Lien NFTs
 
-## NFT Wallet
+## NFT Wallet for ICP.Ninja:
 
-- There are implementations for ICRC-1 tokens at ICP.Ninja, but there is no anything for ICRC-7
+There are implementations for ICRC-1 tokens at ICP.Ninja, but there is no anything for ICRC-7/NFT, so I decided to make own Implementation of ICRC-7/NFT
 
+## 📜🏠 Tax Lien NFTs
 
+- A **Lien** is a legal right to keep possession of property belonging to another person until a debt owed by that person is discharged.  
+- A **Tax Lien** is imposed by law on a property to secure the payment of taxes.
+- Tax Lien NFTs gives crypto investor opportunity to invest in USA Tax Liens
 
-## 📜🏠 Tax Lien NFT
-
-A **Lien** is a legal right to keep possession of property belonging to another person until a debt owed by that person is discharged.  
-A **Tax Lien** is imposed by law on a property to secure the payment of taxes.
 
 ## 💡 Key Features 
 

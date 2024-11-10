@@ -1,8 +1,8 @@
 [package]
-name = "icrc-nft-taxlien"
-version = "0.2.2"
-description = "NFT for Tax Liens"
-repository = "https://github.com/Ananta-Shakti/nft_taxlien"
+name = "nft-wallet"
+version = "1.0.0"
+description = "NFT Wallet for ICP.Ninja: Tax Lien NFTs"
+repository = "https://github.com/Ananta-Shakti/nft_wallet"
 keywords = [ "nft" ]
 license = "MIT"
 

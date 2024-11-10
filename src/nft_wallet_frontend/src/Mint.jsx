@@ -27,7 +27,7 @@ const TokenSender = ({ actor, updateSupply, decimals }) => {
       });*/
 
       const result = await actor.icrcX_mint({
-        token_id: tokenId,
+        token_id: 0,
         owner: {
           owner: Principal.fromText(address),
           subaccount: []
@@ -36,7 +36,7 @@ const TokenSender = ({ actor, updateSupply, decimals }) => {
           "icrc97:metadata":
           {
             "name":NFTName,
-            "description": "NFT for Tax Lien, USA, FL, POLK, ID:...",
+            "description": description,
             "assets":
             {
               "url":"https://taxlien.online/image/PIA18249/12345.jpg",

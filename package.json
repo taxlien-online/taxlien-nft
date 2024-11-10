@@ -13,6 +13,7 @@
   },
   "type": "module",
   "workspaces": [
+    "src/nft_wallet_frontend",
     "src/nft_taxlien_frontend"
   ]
 }

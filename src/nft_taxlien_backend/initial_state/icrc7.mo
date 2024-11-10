@@ -4,7 +4,7 @@ module{
   public let defaultConfig = func(caller: Principal) : ICRC7.InitArgs{
       ?{
         symbol = ?"LIEN";
-        name = ?"Tax Lien";
+        name = ?"Tax Lien NFT";
         description = ?"NFT for Tax Lien of Real Estate Property";
         logo = ?"https://4098413308-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FRRg5KdkJjv4kDW5pXK42%2Fuploads%2FBLEGBSCOFRILpZlDtsDL%2Ftaxlien.png?alt=media&token=7d2f6a2e-2feb-4e98-8afa-61b210973624";
         supply_cap = null;
