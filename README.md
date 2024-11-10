@@ -2,13 +2,13 @@
 
 ## NFT Wallet for ICP.Ninja:
 
-There are implementations for ICRC-1 tokens at ICP.Ninja, but there is no anything for ICRC-7/NFT, so I decided to make own Implementation of ICRC-7/NFT
+- There are implementations for ICRC-1 tokens at ICP.Ninja, but there is no anything for ICRC-7/NFT, so I decided to make own Implementation of ICRC-7/NFT
 
 ## 📜🏠 Tax Lien NFTs
 
 - A **Lien** is a legal right to keep possession of property belonging to another person until a debt owed by that person is discharged.  
 - A **Tax Lien** is imposed by law on a property to secure the payment of taxes.
-- Tax Lien NFTs gives crypto investor opportunity to invest in USA Tax Liens
+- Tax Lien NFTs gives crypto investor possibility to invest in USA Tax Liens
 
 
 ## 💡 Key Features 
@@ -76,16 +76,15 @@ Example canister nft_taxlien_backend can use standart Mint(), Burn() commands an
 ```
 Name of team: NativeMind.net
 Name of track:-
-Repo link: https://github.com/Ananta-Shakti/icp_taxlien
+Repo link: https://github.com/Ananta-Shakti/nft_wallet
 Team participants: Anton Dodonov
-Describe the project: NFT for USA Tax Liens
+Describe the project: NFT Wallet for ICP.Ninja: Tax Lien NFTs
 What problem it is solving:
 
-Make NFT tokens for buy and sell tax liens.
-Right now it is possible only by offline and online methods. But if buy taxlien and owner didn't pay for long time, money are freezed. So NFT Tokens give possibility to sell tax lien to different person and don't freeze money for a long time
-What unique features of ICP it is using
+1. There are implementations for ICRC-1 tokens at ICP.Ninja, but there is no anything for ICRC-7/NFT, so I decided to make own Implementation of ICRC-7/NFT
+2. Tax Lien NFTs gives crypto investor possibility to invest in USA Tax Liens
 
-OISY wallet Principal: 2646156
+OISY wallet Principal: cbdg4-6gv3n-wwq3b-jg5gf-7ofvg-kakeb-jca23-m2w2f-wp6zl-t3vs2-3ae
 Mainnet canister link frontend:-
 Mainnet canister link backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=hf4gy-eiaaa-aaaao-qezba-cai
 Demo video link:-
@@ -146,46 +145,12 @@ Go step-by-step from small scope to extended
 Full-fill formalities: on mainnet
  
 
+
+
+
 Based on https://internetcomputer.org/docs/current/developer-docs/defi/nfts/nft-collections https://github.com/PanIndustrial-Org/icrc_nft.mo.git
 
 Documentation:
 https://internetcomputer.org/docs/current/tutorials/hackathon-prep-course/exploring-the-frontend/
 https://internetcomputer.org/docs/current/tutorials/developer-journey/level-3/3.4-intro-to-agents/
 https://internetcomputer.org/docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent
-
-## Install
-```
-mops add icrc_nft-mo
-```
-
-## Deployment
-
-The simplest deployment is to provide null arguments to each ICRC(3,7,30) component.
-
-Edit the files in /example/initial_state for each ICRC.
-
-```
-dfx deploy icrc7 --argument 'record {icrc7_args = null; icrc37_args =null; icrc3_args =null;}' --mode reinstall
-```
-
-This will produce an NFT canister with the default config.  For more fine grained control, please consult the documentation for each project:
-
-- ICRC3 - Transaction Log and Archive - https://github.com/PanIndustrial-Org/icrc37.mo
-- ICRC7 - Base NFT - https://github.com/PanIndustrial-Org/icrc7.mo
-- ICRC37 - Approval workflow - https://github.com/PanIndustrial-Org/icrc37.mo
-
-A sample deployment/functional script is provided in deploy.sh in the example folder.
-
-## Provided functions
-
-For sample minting, burning, approval, transfer functions, please see the deploy.sh file in the examples folder.
-
-Further availability of functionality can be referenced in earlier referenced documentation.
-
-## Documentation
-
-Pre-compiled docs can be found on mops.one at:
-
-- ICRC3 - Transaction Log and Archive - https://mops.one/icrc3-mo/docs/lib
-- ICRC7 - Base NFT - https://mops.one/icrc7-mo/docs
-- ICRC37 - Approval workflow - https://mops.one/icrc37-mo/docs
