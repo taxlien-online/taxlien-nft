@@ -12,10 +12,12 @@ const TokenInfo = ({ totalSupply }) => {
   useEffect(() => {
     const fetchTokenInfo = async () => {
       try {
-        console.log(123);
+        console.log("fetchTokenInfo");
         //FIX const metadata = await nft_taxlien_backend.icrc1_metadata();
-        
-        const metadata = await nft_taxlien_backend.icrc7_token_metadata();
+        console.log("icrc7_collection_metadata");
+        const metadata = await nft_taxlien_backend.icrc7_collection_metadata();
+        console.log("metadata");
+        console.log(metadata);
         const newTokenInfo = metadata.reduce((acc, [key, value]) => {
           const parsedKey = key.split(':')[1].trim();
           if (parsedKey === 'name' || parsedKey === 'symbol') {
@@ -24,7 +26,6 @@ const TokenInfo = ({ totalSupply }) => {
           return acc;
         }, {});
         
-        //const newTokenInfo={name:"Tax Lien NFT",symbol:"LIEN"};
         setTokenInfo((prevState) => ({
           ...prevState,
           ...newTokenInfo,
@@ -50,8 +51,10 @@ const TokenInfo = ({ totalSupply }) => {
   const cardInfo = [
     { icon: '💰', title: 'Name', value: tokenInfo.name },
     { icon: '🏷️', title: 'Symbol', value: tokenInfo.symbol },
-    { icon: '📊', title: 'Total Supply', value: totalSupply },
-    { icon: '💳', title: 'Token Address (ICRC-2)', value: canisterId }
+    { icon: '💳', title: 'Token Address (ICRC-2)', value: canisterId },
+    { icon: '👜', title: 'Own NFTs', value: totalSupply },
+    { icon: '📊', title: 'Total NFTs', value: totalSupply }
+
   ];
 
   return <CardDisplay cards={cardInfo} />;

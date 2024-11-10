@@ -3,7 +3,10 @@ import ApproveSpender from './TokenApprove';
 import AuthWarning from './AuthWarning';
 import BalanceChecker from './BalanceChecker';
 import Header from './Header';
-import TransferFrom from './TokenTransfer';
+
+import Mint from './Mint';
+import Transfer from './Transfer';
+//import TransferFrom from './TokenTransfer';
 import TokenInfo from './TokenInfo';
 import TokenSender from './TokenSender';
 import CreateToken from './CreateToken';
@@ -17,9 +20,10 @@ const App = () => {
 
   const updateSupply = async () => {
     try {
-      const supply = 10;//FIX await actor.icrc1_total_supply();
-      const decimals = 10;//FIX BigInt(await actor.icrc1_decimals());
-      setTotalSupply(`${Number(supply) / Number(10n ** decimals)}`);
+      const supply = await actor.icrc7_total_supply();
+      const decimals = 0;//FIX BigInt(await actor.icrc1_decimals());
+      //setTotalSupply(`${Number(supply) / Number(10n ** decimals)}`);
+      setTotalSupply(`${Number(supply)}`);
       setDecimals(decimals);
     } catch (error) {
       console.error('Error fetching total supply:', error);
@@ -58,6 +62,16 @@ const App = () => {
         setTokenCreated={setTokenCreated}
       />
         <div><TokenInfo totalSupply={totalSupply} /></div>
+        <div className="mx-auto">
+            {isAuthenticated ? (
+              <div className="grid grid-cols-1 gap-8 px-4 md:grid-cols-4 lg:grid-cols-3">
+                <Mint actor={actor} updateSupply={updateSupply} decimals={decimals} />
+                <Transfer actor={actor} decimals={decimals} />
+              </div>
+            ) : (
+              <AuthWarning />          
+            )}
+        </div>
       )
     </div>
   );
