@@ -1,5 +1,8 @@
 {
   "business_backend": {
     "ic": "uevcw-2aaaa-aaaaj-qnd5a-cai"
+  },
+  "icrc1_ledger_canister": {
+    "ic": "uduec-xyaaa-aaaaj-qnd5q-cai"
   }
 }
