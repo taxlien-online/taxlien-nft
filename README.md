@@ -85,8 +85,12 @@ What problem it is solving:
 2. Tax Lien NFTs gives crypto investor possibility to invest in USA Tax Liens
 
 OISY wallet Principal: cbdg4-6gv3n-wwq3b-jg5gf-7ofvg-kakeb-jca23-m2w2f-wp6zl-t3vs2-3ae
-Mainnet canister link frontend:-
-Mainnet canister link backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=hf4gy-eiaaa-aaaao-qezba-cai
+(note: OISY is broken, so I give Plug account, sorry)
+Mainnet canister link frontend: https://uyryh-naaaa-aaaaj-qnd7a-cai.icp0.io/
+Mainnet canister link backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=uwtvp-wqaaa-aaaaj-qnd6a-caii
+Additional canister link nft_taxlien_frontend: https://urst3-3iaaa-aaaaj-qnd6q-cai.icp0.io/
+Additional canister link business_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=uevcw-2aaaa-aaaaj-qnd5a-cai
+Additional canister link payment_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=u7q6t-ayaaa-aaaaj-qnd7q-cai
 Demo video link: https://github.com/Ananta-Shakti/nft_wallet/releases/download/video/video.mov
 ```
 

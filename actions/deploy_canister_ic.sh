@@ -1,0 +1,1 @@
+dfx deploy nft_taxlien_backend --network ic
