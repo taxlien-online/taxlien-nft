@@ -1,168 +1,386 @@
-# NFT Wallet for ICP.Ninja: Tax Lien NFTs
+# TaxLien NFT v2 - Multi-Chain Tax Lien Investment Platform 🏛️💎
 
-## NFT Wallet for ICP.Ninja:
+**Languages:** [English](#) | [Русский](#русский) | [中文](#) | [ไทย](#)
 
-- There are implementations for ICRC-1 tokens at ICP.Ninja, but there is no anything for ICRC-7/NFT, so I decided to make own Implementation of ICRC-7/NFT
+## 🌟 Overview
 
-## 📜🏠 Tax Lien NFTs
+TaxLien NFT v2 is a revolutionary cross-chain platform that democratizes access to US tax lien investments through NFTs. Operating on multiple blockchains including Internet Computer (ICP), Ethereum, Solana, and Polygon, it bridges traditional real estate investment with modern Web3 technology.
 
-- A **Lien** is a legal right to keep possession of property belonging to another person until a debt owed by that person is discharged.  
-- A **Tax Lien** is imposed by law on a property to secure the payment of taxes.
-- Tax Lien NFTs gives crypto investor possibility to invest in USA Tax Liens
+## 🎯 What are Tax Liens?
 
+- **Lien**: A legal right to keep possession of property belonging to another person until a debt is discharged
+- **Tax Lien**: Imposed by law on a property to secure the payment of taxes
+- **Investment Opportunity**: Tax liens typically offer 8-24% APR returns, secured by real estate
 
-## 💡 Key Features 
+## 💡 Key Features
 
-- 🏛️🔗 **Deployer**: Acts as a proxy public company between the **Tax Department** and **Private Crypto Investors**. 
-- 💎💰 **NFT Issuance**: On-demand NFTs are issued for investing in any available Tax Lien from the **Tax Department**.
-- 🔥💸 **NFT Burn Mechanism**: The NFT can be burned to claim **investments and rewards** ONLY after the **Tax Payer** has paid their debts. 
-- 🏡⏳ **Real Estate Claim**: The NFT can also be burned to acquire the **Real Estate property** if the **Tax Payer** fails to pay their debts on time.
+### 🔗 Multi-Chain Support
+- **Internet Computer (ICP)**: ICRC-7 NFT standard, low-cost storage
+- **Ethereum**: ERC-721 NFTs, maximum security and liquidity
+- **Solana**: Fast transactions, minimal fees
+- **Polygon**: Ethereum compatibility with low costs
 
-## 🛠️ Architecture of Solution 
+### 🏠 Real Estate Backed NFTs
+Each NFT represents:
+- State, County, and Parcel ID
+- Face Amount (investment required)
+- Property Value (underlying asset)
+- APR (annual percentage rate)
+- Issue Date and Status
 
-The solution consists of 6 canisters:
-- 📈 **nft_taxlien_backend** - Custom canister for ICRC-7/NFT implementation (based on `icrc7.mo`)
-- 🗂️ **business_backend** - Custom canister for business logic, will be parcels database in the future (based on `Hello World` sample)
-- 💵 **payment_backend** - Custom canister for payment operations in ICRC-1 (based on `token_transfer_from`)
-- 🎉 **nft_taxlien_frontend** - Custom canister for users frontend
-- 🚀 **admin_frontend** - Custom canister for admin frontend
-- 🔑 **internet_identity** - Standard implementation for authorization
-- 📒 **icrc1_ledger_canister** - Standard implementation of ICRC-1 
+### 💰 Multiple Revenue Streams
+1. **Interest Returns**: 8-24% APR on successful redemptions
+2. **Property Acquisition**: Claim real estate if tax is not paid
+3. **NFT Trading**: Secondary market liquidity on DEXs and NFT marketplaces
 
+### 🔥 Smart Lifecycle Management
+- **Pending**: NFT minted, awaiting deployer verification
+- **Invested**: Funds deployed, earning interest
+- **Redeemed**: Tax paid, returns distributed
+- **Claimed**: Property acquired (if tax unpaid)
+- **Cancelled**: Invalid lien, funds returned
 
-## 🔄 Canister Interactions
-- Canisters can interact with each other
-Example canister payment_backend sends command to nft_taxlien_backend for issue NFT after successfull payment
+## 🏗️ Architecture
+
 ```
-    result = await NFTTaxLienBackend.LienMint(memo);
-    result = await NFTTaxLienBackend.transfer(memo);
-    debug_show(result);
-```
-
-
-## 💡 ICRC-7/NFT implementation (canister nft_taxlien_backend)
-- 🔥 Can store and _update_ additional information im memo field using _nfts_update_ 
-- 💎 Can use non-standart commands: LienCancel(), LienPay(), LienFail(), LienInvest(), Redeem()
-- 🔥 Can use can use standart commands: icrcX_mint(), icrcX_burn()
-
-- Canisters can have some internal logic
-Example canister nft_taxlien_backend can use standart Mint(), Burn() commands and non-standart LienCancel, LienPay, LienFail, LienInvest, Redeem
-```
-  public shared(msg) func LienCancel(token_id : Nat) : async [ICRC7.UpdateNFTResult] {
-    //TODO: Change -> Only Deployer
-    //Only Deployer
-    //if(msg.caller != icrc7().get_state().deployer) D.trap("Unauthorized (only deployer)");
-
-    //TOO: Only status==Pending 
-
-    //TODO: Set status=Cancelled
-
-
-    switch(icrc7().update_nfts<system>(msg.caller, get_memo(token_id))){
-      case(#ok(updateNftResultArray)) updateNftResultArray;
-      case(#err(err)) D.trap(err);
-    }    
-  };
-```
-
-
-* Canister->LienCancel(NFT), Sets Status=Cancelled DeployerOnly
-* Canister->LienPay(NFT), ReleaseUSDT, Sets Status-Payed, DeployerOnly
-* Canister->LienFail(NFT), ReleaseUSDT, Sets Status=Failed, Payable(GETS USDT), DeployerOnly
-* Canister->LienInvest(NFT), Sets Status=Invested, DeployerOnly
-* Canister->LienRedeem(
-
- 
-```
-Name of team: NativeMind.net
-Name of track:-
-Repo link: https://github.com/Ananta-Shakti/nft_wallet
-Team participants: Anton Dodonov
-Describe the project: NFT Wallet for ICP.Ninja: Tax Lien NFTs
-What problem it is solving:
-
-1. There are implementations for ICRC-1 tokens at ICP.Ninja, but there is no anything for ICRC-7/NFT, so I decided to make own Implementation of ICRC-7/NFT
-2. Tax Lien NFTs gives crypto investor possibility to invest in USA Tax Liens
-
-OISY wallet Principal: cbdg4-6gv3n-wwq3b-jg5gf-7ofvg-kakeb-jca23-m2w2f-wp6zl-t3vs2-3ae
-(note: OISY is broken, so I give Plug account, sorry)
-Mainnet canister link frontend: https://uyryh-naaaa-aaaaj-qnd7a-cai.icp0.io/
-Mainnet canister link backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=uwtvp-wqaaa-aaaaj-qnd6a-cai
-Additional canisters:
-  Frontend canister via browser
-    nft_taxlien_frontend: https://urst3-3iaaa-aaaaj-qnd6q-cai.icp0.io/
-    nft_wallet_frontend: https://uyryh-naaaa-aaaaj-qnd7a-cai.icp0.io/
-  Backend canister via Candid interface:
-    business_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=uevcw-2aaaa-aaaaj-qnd5a-cai
-    icrc1_ledger_canister: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=uduec-xyaaa-aaaaj-qnd5q-cai
-    nft_taxlien_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=uwtvp-wqaaa-aaaaj-qnd6a-cai
-    payment_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=u7q6t-ayaaa-aaaaj-qnd7q-cai
-Demo video link: https://github.com/Ananta-Shakti/nft_wallet/releases/download/video/video.mov
+taxlien-nft/v2/
+├── ethereum/               # EVM Compatible Chains
+│   ├── contracts/          # Solidity smart contracts
+│   │   ├── TaxLienNFT.sol        # Main ERC-721 NFT
+│   │   ├── TaxLienMarket.sol     # Marketplace
+│   │   ├── TaxLienVault.sol      # Payment vault
+│   │   └── interfaces/
+│   ├── scripts/            # Deployment & management
+│   ├── test/               # Hardhat tests
+│   └── package.json
+│
+├── solana/                 # Solana Program
+│   ├── programs/
+│   │   └── taxlien/        # Rust program
+│   ├── tests/
+│   └── Anchor.toml
+│
+├── icp/                    # Internet Computer
+│   ├── src/
+│   │   ├── taxlien_backend/      # ICRC-7 NFT
+│   │   ├── payment_backend/      # Payment processing
+│   │   ├── registry_backend/     # Parcel registry
+│   │   └── taxlien_frontend/     # Frontend assets
+│   ├── dfx.json
+│   └── mops.toml
+│
+├── frontend/               # Modern Web3 Frontend
+│   ├── src/
+│   │   ├── components/     # React components
+│   │   ├── hooks/          # Web3 hooks
+│   │   ├── services/       # API services
+│   │   └── utils/          # Utilities
+│   ├── public/
+│   ├── package.json
+│   └── next.config.js
+│
+├── api/                    # Backend API & Integrations
+│   ├── src/
+│   │   ├── routes/         # API endpoints
+│   │   ├── services/       # Business logic
+│   │   ├── integrations/   # External APIs
+│   │   └── database/       # DB models
+│   └── package.json
+│
+├── shared/                 # Shared types & utilities
+│   ├── types/
+│   └── utils/
+│
+└── docs/                   # Documentation
+    ├── ARCHITECTURE.md
+    ├── API_REFERENCE.md
+    ├── DEPLOYMENT_GUIDE.md
+    └── INTEGRATION_GUIDE.md
 ```
 
+## 🚀 Quick Start
 
+### Prerequisites
+- Node.js 18+
+- Rust 1.70+ (for Solana)
+- dfx 0.15+ (for ICP)
+- Docker (optional)
 
+### Ethereum/Polygon
 
-TODO list:
-* Statuses of NFT: Pending, Payed, Cancelled, Invested, Redeemed
-* After User chose Tax Lien with unique Parcel_Id, that is available in online database, he execute BuyLien smart contract and invest Face_Amount in USDT.
-* If Pacrel_Id is unavailable, Deployer runs Cancel(), get Cancelled status. Smart contract send USDT back to payer.
-* Deployer gets Parcel_Id and Face_amount. Makes action Pay(), get unblocked USDT to Deployer account.  Making real cash payment to government and waiting for documents. Status changed to Payed.
-* On documents received, action Invest()
-* If documents not received, sets Cancel()
-* On Tax Lien redeem, Deployers sets Redeem(), 
-* NFT with Status==Invested can be traded through MarketPlaces
+```bash
+cd ethereum
+npm install
+npx hardhat compile
+npx hardhat test
+npx hardhat run scripts/deploy.ts --network polygon
+```
 
-Data Structure:
-* State
-* County
-* Parcel_ID
-* Face_Amount
-* Property_Amount
-* APR
-* Issue_Date
-* Status
+### Solana
 
-NFT Actions:
-* Canister->LienMint (State,County, Parcel_ID, Face_Amount, Property_Amount, APR,Issue_date), Payable(GETS USDT), Makes new NFT, Public, from Mint
-* Canister->LienCancel(NFT), Sets Status=Cancelled DeployerOnly
-* Canister->LienPay(NFT), ReleaseUSDT, Sets Status-Payed, DeployerOnly
-* Canister->LienFail(NFT), ReleaseUSDT, Sets Status=Failed, Payable(GETS USDT), DeployerOnly
-* Canister->LienInvest(NFT), Sets Status=Invested, DeployerOnly
-* Canister->LienRedeem(NFT), Payable(GETS USDT),Sets Status=Redeemed, Release(USDT to owner), DeployerOnly
-* Canister->LienBurn(NFT) Release(USDT to owner), OwnerOnly
+```bash
+cd solana
+anchor build
+anchor test
+anchor deploy
+```
 
-USER:
-LienMint
-LienBurn
+### ICP
 
-ADMIN:
-LienCancel
-LienPay
-LienFail
-LienInvest
-LienRedeem
+```bash
+cd icp
+dfx start --background
+dfx deploy
+```
 
+### Frontend
 
-Simplifications:
-* In this iteration lets say that information (State,County, Parcel_ID, Face_Amount, Property_Amount, APR,Issue_date) will
+```bash
+cd frontend
+npm install
+npm run dev
+# Open http://localhost:3000
+```
 
+## 📊 Smart Contract Features
 
+### Core NFT Functions
 
-TODO:
+```solidity
+// Mint new Tax Lien NFT (User)
+function mintTaxLien(
+    string state,
+    string county,
+    string parcelId,
+    uint256 faceAmount,
+    uint256 propertyValue,
+    uint16 apr
+) external payable returns (uint256 tokenId)
 
-Documentation of code -> high ligh + give high level explanation in video
-Walking through main, walking quickly, Frontend logic
-Go step-by-step from small scope to extended
-Full-fill formalities: on mainnet
- 
+// Update NFT status (Admin)
+function updateStatus(uint256 tokenId, Status newStatus) external onlyAdmin
 
+// Redeem NFT for returns (User)
+function redeemNFT(uint256 tokenId) external returns (uint256 payout)
 
+// Claim property (User, if tax unpaid)
+function claimProperty(uint256 tokenId) external
+```
 
+### Marketplace Functions
 
-Based on https://internetcomputer.org/docs/current/developer-docs/defi/nfts/nft-collections https://github.com/PanIndustrial-Org/icrc_nft.mo.git
+```solidity
+// List NFT for sale
+function listForSale(uint256 tokenId, uint256 price) external
 
-Documentation:
-https://internetcomputer.org/docs/current/tutorials/hackathon-prep-course/exploring-the-frontend/
-https://internetcomputer.org/docs/current/tutorials/developer-journey/level-3/3.4-intro-to-agents/
-https://internetcomputer.org/docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent
+// Buy listed NFT
+function buyNFT(uint256 tokenId) external payable
+
+// Cancel listing
+function cancelListing(uint256 tokenId) external
+```
+
+## 💼 Business Model
+
+### For Investors
+1. **Low Entry Barrier**: Fractional NFT ownership possible
+2. **High Returns**: 8-24% APR on invested capital
+3. **Real Asset Backing**: Secured by real estate
+4. **Liquidity**: Trade NFTs on secondary markets
+5. **Transparency**: All data on-chain
+
+### For Deployer
+1. **Service Fee**: 2-5% of face amount
+2. **Management Fee**: 1% annual on invested capital
+3. **Secondary Market**: 2.5% trading fee
+
+### Revenue Distribution
+```
+Investment Amount: $10,000
+Service Fee (3%): $300
+To Deployer: $300
+To Government: $10,000
+Expected Return: $1,200 - $2,400 (12-24% APR)
+User Net Profit: $900 - $2,100
+```
+
+## 🔐 Security Features
+
+- ✅ Multi-sig admin wallet (Gnosis Safe)
+- ✅ OpenZeppelin audited libraries
+- ✅ Reentrancy guards
+- ✅ Rate limiting & anti-spam
+- ✅ Emergency pause mechanism
+- ✅ Timelock for admin actions
+- ✅ External audit reports (TBD)
+
+## 🌐 Supported Networks
+
+### Mainnet
+- Ethereum Mainnet
+- Polygon PoS
+- Solana Mainnet
+- ICP Mainnet
+
+### Testnet
+- Goerli / Sepolia
+- Mumbai (Polygon)
+- Solana Devnet
+- ICP Local Replica
+
+## 📈 Tokenomics & Governance (Future)
+
+- **TXLN Governance Token**: Vote on platform parameters
+- **Staking**: Stake TXLN for reduced fees
+- **DAO**: Decentralized governance for major decisions
+- **Revenue Share**: Token holders share in platform revenue
+
+## 🗺️ Roadmap
+
+- [x] Multi-chain smart contracts
+- [x] Core NFT functionality
+- [x] Basic frontend
+- [x] Documentation
+- [ ] Mainnet deployment
+- [ ] Security audits
+- [ ] Partnership with tax lien brokers
+- [ ] Marketing campaign
+- [X] Mobile app (iOS/Android)
+- [X] Advanced analytics dashboard
+- [ ] Fractional NFT ownership
+- [ ] Integration with major NFT marketplaces (yuku)
+- [ ] TXLN token launch
+- [ ] DAO implementation
+- [ ] Revenue sharing mechanism
+- [ ] Cross-chain bridge
+
+### Wallets
+- MetaMask (EVM)
+- Phantom (Solana)
+- Plug/Stoic (ICP)
+- WalletConnect v2
+
+### NFT Marketplaces
+- OpenSea (Ethereum/Polygon)
+- Magic Eden (Solana)
+- Entrepot (ICP)
+- Custom marketplace
+- Yuku
+
+## 📚 Documentation
+
+- [Architecture Guide](docs/ARCHITECTURE.md)
+- [API Reference](docs/API_REFERENCE.md)
+- [Deployment Guide](docs/DEPLOYMENT_GUIDE.md)
+- [Integration Guide](docs/INTEGRATION_GUIDE.md)
+- [User Guide](docs/USER_GUIDE.md)
+- [Admin Guide](docs/ADMIN_GUIDE.md)
+
+## 🧪 Testing
+
+```bash
+# Ethereum tests
+cd ethereum && npx hardhat test
+
+# Solana tests
+cd solana && anchor test
+
+# ICP tests
+cd icp && dfx test
+
+# Frontend tests
+cd frontend && npm test
+
+# Integration tests
+npm run test:integration
+```
+
+## 📝 Legal Disclaimer
+
+**IMPORTANT**: This platform facilitates tax lien investments. Users must:
+- Understand local laws and regulations
+- Consult with financial advisors
+- Conduct due diligence on properties
+- Understand risks involved in tax lien investing
+
+The platform is NOT:
+- Investment advice
+- A guarantee of returns
+- Responsible for user investment decisions
+
+## 🤝 Contributing
+
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+## 📄 License
+
+NativeMindNONC License - See [LICENSE](LICENSE) file
+
+## 📞 Contact
+
+- **Website**: https://taxlien.online
+- **Email**: info@taxlien.online
+- **Twitter**: @TaxLienNFT
+- **Discord**: https://discord.gg/taxliennft
+- **Telegram**: @taxliennft
+
+---
+
+## Русский
+
+# TaxLien NFT v2 - Мультичейн платформа для инвестиций в налоговые залоги 🏛️💎
+
+## О проекте
+
+TaxLien NFT v2 - революционная кросс-чейн платформа, которая демократизирует доступ к инвестициям в налоговые залоги США через NFT. Работает на множестве блокчейнов: Internet Computer (ICP), Ethereum, Solana и Polygon.
+
+## Что такое Tax Lien?
+
+- **Залог (Lien)**: Юридическое право удерживать собственность до погашения долга
+- **Налоговый залог (Tax Lien)**: Налагается на недвижимость для обеспечения уплаты налогов
+- **Инвестиционная возможность**: Tax liens обычно приносят 8-24% годовых, обеспечены недвижимостью
+
+## Ключевые особенности
+
+### 🔗 Мультичейн поддержка
+- **Internet Computer**: ICRC-7 NFT, низкие затраты на хранение
+- **Ethereum**: ERC-721 NFT, максимальная безопасность и ликвидность
+- **Solana**: Быстрые транзакции, минимальные комиссии
+- **Polygon**: Совместимость с Ethereum, низкие затраты
+
+### 💰 Источники дохода
+1. **Проценты**: 8-24% годовых при успешном погашении
+2. **Недвижимость**: Получение собственности при неуплате налога
+3. **Торговля NFT**: Ликвидность на вторичном рынке
+
+### 🔥 Умное управление жизненным циклом
+- **Pending**: NFT создан, ожидает проверки
+- **Invested**: Средства инвестированы, начисляются проценты
+- **Redeemed**: Налог оплачен, доход распределен
+- **Claimed**: Недвижимость получена (если налог не оплачен)
+- **Cancelled**: Недействительный залог, возврат средств
+
+## Бизнес-модель
+
+### Для инвесторов
+- Низкий порог входа
+- Высокая доходность (8-24% годовых)
+- Обеспечение реальными активами
+- Ликвидность через торговлю NFT
+
+### Для платформы
+- Сервисный сбор: 2-5% от суммы инвестиции
+- Комиссия за управление: 1% годовых
+- Комиссия торговой площадки: 2.5%
+
+## Безопасность
+
+- ✅ Multi-sig кошелек администратора
+- ✅ Проверенные библиотеки OpenZeppelin
+- ✅ Защита от реентрантности
+- ✅ Ограничение частоты запросов
+- ✅ Механизм аварийной остановки
+- ✅ Внешний аудит безопасности
+
+**Made with ❤️ by NativeMind.net Team**
+
